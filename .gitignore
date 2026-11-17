@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+*backup*.json
+*progress*.json
+.private/
+private/
+node_modules/
+.DS_Store
+Thumbs.db

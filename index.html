@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081320">
+  <meta name="description" content="A local-first visual workspace to organize project checklists, files, notes and links — including a detailed AWS operations guide.">
+  <title>Project Control Room — Your project workspace</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar" id="sidebar">
+      <a href="#/" class="brand" aria-label="Project Control Room home">
+        <span class="brandmark">◈</span>
+        <span><b>controlroom<span class="brand-dot">.</span></b><small>PROJECT WORKSPACE</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="sidenav" aria-label="Primary navigation">
+        <a href="#/" id="nav-home"><span class="nav-icon">▦</span> Overview</a>
+        <a href="#/projects" id="nav-projects"><span class="nav-icon">▤</span> All projects <span class="nav-count" id="nav-project-count">1</span></a>
+        <a href="#/library" id="nav-library"><span class="nav-icon">▧</span> File library</a>
+      </nav>
+      <div class="side-label">GUIDES</div>
+      <nav class="sidenav" aria-label="Guides">
+        <a href="guides/aws.html" target="_blank" rel="noopener"><span class="nav-icon">◉</span> AWS Control Room <span class="up-right">↗</span></a>
+        <a href="#/settings" id="nav-settings"><span class="nav-icon">⚙</span> Backup & settings</a>
+      </nav>
+      <div class="side-spacer"></div>
+      <div class="side-panel">
+        <span class="status-dot"></span><b>Local-first workspace</b>
+        <p>Your files and progress are saved in this browser. They are not uploaded to GitHub automatically.</p>
+        <button class="mini-link" data-action="export">↧ Export all project data</button>
+      </div>
+      <div class="side-footer">Made for every project, one at a time. <span id="app-version">v1.0</span></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <button class="mobile-menu" type="button" aria-label="Toggle menu" id="mobile-menu">☰</button>
+        <div class="breadcrumb"><span class="breadcrumb-root">WORKSPACE</span><span class="breadcrumb-slash">/</span><span id="breadcrumb-current">Overview</span></div>
+        <div class="top-actions"><button class="btn btn-secondary" id="header-import" data-action="import">↑ <span>Import backup</span></button><button class="btn btn-primary" data-action="new-project"><span>＋</span> New project</button></div>
+      </header>
+      <main id="app" tabindex="-1" aria-live="polite"><div class="loading">Opening workspace…</div></main>
+      <footer class="footer"><span>Project Control Room · Runs entirely in your browser</span><span>Not affiliated with AWS or GitHub</span></footer>
+    </div>
+  </div>
+  <dialog id="form-dialog" class="dialog"><form id="dialog-form" method="dialog"><div class="dialog-head"><div><div class="section-label" id="dialog-kicker">NEW</div><h2 id="dialog-title">Create project</h2></div><button class="icon-button" type="button" id="dialog-close" aria-label="Close dialog">×</button></div><div id="dialog-fields"></div><div class="dialog-actions"><button class="btn btn-secondary" type="button" id="dialog-cancel">Cancel</button><button class="btn btn-primary" id="dialog-submit" type="submit">Create project</button></div></form></dialog>
+  <dialog id="viewer-dialog" class="viewer-dialog"><div class="viewer-head"><b id="viewer-title">File preview</b><button type="button" id="viewer-close" class="icon-button" aria-label="Close preview">×</button></div><div id="viewer-content"></div><div class="viewer-footer"><a id="viewer-download" class="btn btn-secondary" download>↓ Download file</a></div></dialog>
+  <input type="file" id="import-picker" hidden accept="application/json,.json">
+  <input type="file" id="file-picker" hidden multiple>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
